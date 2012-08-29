@@ -17,4 +17,5 @@ class OFXWriter():
         self.file_object = file;
         
     def write(self):
+        raise NotImplementedError()
         pass
