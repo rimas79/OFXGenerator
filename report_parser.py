@@ -1,3 +1,4 @@
+#-*- coding: cp1251 -*-
 '''
 Created on 19.11.2010
 
@@ -19,7 +20,9 @@ def format_trn_date(date):
         format = "%d%b"
     elif len(date) == 7:
         format = "%d%b%y"
-    dt = datetime.strptime(date, format)
+#    print(date)
+#    print(format)
+    dt = datetime.strptime(date.encode("cp1251"), format)
     return dt
     pass
 

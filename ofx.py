@@ -60,13 +60,13 @@ class OFX(OFXWriter):
         for trans in report.get_trans_list():
             trns = (
                 E.STMTTRN(
-                    E.DTPOSTED(trans.opDate.strftime("%Y%m%d")),
-                    E.DTUSER(trans.checkDate.strftime("%Y%m%d")),
-                    E.TRNAMT(trans.accSum),
-                    E.FITID(str(trans.opDate.strftime("%Y%m%d")) + str(trans.opNum)),
-                    E.CHECKNUM(trans.opNum),
-                    E.NAME(trans.opPayee),
-                    E.MEMO(trans.opPayee)
+                    E.DTPOSTED(trans[0].strftime("%Y%m%d")), #.opDates
+                    E.DTUSER(trans[1].strftime("%Y%m%d")), #.checkDate
+                    E.TRNAMT(trans[6]), #.accSum
+                    E.FITID(str(trans[0].strftime("%Y%m%d")) + str(trans[2])), #.opDate, .opNum
+                    E.CHECKNUM(trans[2]), #.opNum
+                    E.NAME(trans[3]), #.opPayee
+                    E.MEMO(trans[3]) #.opPayee
                 )
             )
             transList.append(trns)

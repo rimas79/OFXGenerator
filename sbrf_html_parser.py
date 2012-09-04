@@ -2,7 +2,6 @@
 Created on 13.11.2010
 
 @author: Dennis.Erokhin
-using lxml
 '''
 from report_parser import ReportParser, isCredit, format_trn_date
 from BankTrans import BankTrans

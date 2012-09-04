@@ -35,11 +35,19 @@ class AccStatement():
             print("op_date", trans.opDate)
             print("check_date", trans.checkDate)
             raise(Exception("Transaction check date error"))
-        self.__transList.append(trans)
+        self.__transList.append(trans.getTransRecord())
+#        self.__transList.append(trans)
 
     def getTransList(self):
-        return self.__transList.iteritems()
-
+#        return self.__transList.iteritems()
+        return self.__transList;
+    
+    def __iter__(self):
+        return iter(self.__transList)
+#    
+#    def next(self):
+#        return self.next().getTransRecord();
+    
     def get_acct_id(self):
         return self.__acctID
 

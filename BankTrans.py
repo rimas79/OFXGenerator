@@ -38,6 +38,9 @@ class BankTrans():
         self.opDate = replace_year(opDate)
         self.checkDate = replace_year(checkDate)
     
+    def getTransRecord(self):
+        return [self.opDate, self.checkDate, self.opNum, self.opPayee, self.opCur, self.opSum, self.accSum, self.trnType]
+    
     def print_trans(self):
         print(self.opDate);
         print(self.checkDate);
