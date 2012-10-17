@@ -1,1 +1,2 @@
+Command line utility for convert Sberbank creditcard reports to OFX or CSV
 using lxml to parse HTML and generate XML
