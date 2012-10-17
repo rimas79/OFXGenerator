@@ -23,6 +23,9 @@ class AccStatement():
         '''
         self.__transList = []
 
+    def getTransHeader(self):
+        return ["OpDate", "CheckDate", "OpNum", "OpPayee", "OpCur", "OpSum", "AccSum", "TrnType"]
+
     def get_trans_list(self):
         return self.__transList
 
@@ -37,10 +40,6 @@ class AccStatement():
             raise(Exception("Transaction check date error"))
         self.__transList.append(trans.getTransRecord())
 #        self.__transList.append(trans)
-
-    def getTransList(self):
-#        return self.__transList.iteritems()
-        return self.__transList;
     
     def __iter__(self):
         return iter(self.__transList)

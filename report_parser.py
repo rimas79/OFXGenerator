@@ -11,6 +11,7 @@ def isCredit(sum):
         sum = sum.replace("CR","")
     else:
         sum = "-"+sum
+    sum = sum.replace(".", ",")
     return str(sum)
     
 def format_trn_date(date):

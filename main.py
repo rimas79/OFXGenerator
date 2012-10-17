@@ -100,11 +100,11 @@ def fileProcess(inFileName, fileType, outFileName, outFileType):
             myOFX = OFX(file_object)
             myOFX.saveFile(rep)
     elif  outFileType == "CSV":
-        myCsv = UnicodeWriter(open(outFileName, 'w'), dialect='excel',delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        myCsv = UnicodeWriter(open(outFileName, 'w'), dialect='excel', lineterminator='\n', delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL)
+        myCsv.writerow(rep.getTransHeader())
         myCsv.writerows(rep)
     else:
         raise NotImplementedError()      
-#        shutil.move(inFileName, "../ARC/")
         file_object.closed
     rep = None   
 

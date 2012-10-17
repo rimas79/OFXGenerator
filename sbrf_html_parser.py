@@ -42,12 +42,13 @@ class SBRFHtmlParser(ReportParser):
         for tr in txt2:
             curTrans = BankTrans()
             curTrans.trnType = "CREDIT"
-            curTrans.set_dates(opDate = format_trn_date(tr[1].text), \
-                               checkDate = format_trn_date(tr[2].text), \
+            curTrans.set_dates(opDate = tr[1].text, \
+                               checkDate = tr[2].text, \
                                period = self.__statement.getPeriod())
             curTrans.opNum = tr[3].text
             curTrans.opPayee = tr[4].text
             curTrans.opCur = tr[5].text
-            curTrans.opSum = tr[6].text
+            if tr[6].text:
+                curTrans.opSum = isCredit(tr[6].text)
             curTrans.accSum = isCredit(tr[7].text)
             self.__statement.insertTransaction(curTrans)

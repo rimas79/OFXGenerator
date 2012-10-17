@@ -4,6 +4,8 @@ Created on 15.11.2010
 @author: Dennis.Erokhin
 '''
 
+from datetime import datetime
+
 class BankTrans():    
     '''
     Bank transaction record
@@ -22,19 +24,29 @@ class BankTrans():
         '''
         Constructor
         '''
-    
+
+
     def set_dates(self, opDate, checkDate, period):
         def replace_year(date):
-            if date.month == period[0].month:
-                date = date.replace(period[0].year)
+            assert len(date) == 5 or len(date) == 7
+            date = date.lower()
+            if len(date) == 5:
+                date = date+str(period[0].year)[-2:]
+            format = "%d%b%y"
+#            print(date)
+#            print(format)
+            dt = datetime.strptime(date.encode("cp1251"), format)
+
+            if dt.month == period[0].month:
+                dt = dt.replace(period[0].year)
             else:
-                date = date.replace(period[1].year)
-            return date
+                dt = dt.replace(period[1].year)
+            return dt
         
         if not checkDate:
             print("checkDate is None")
             checkDate = opDate
-
+        
         self.opDate = replace_year(opDate)
         self.checkDate = replace_year(checkDate)
     
